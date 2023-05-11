@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { JokeService } from './joke.service';
+import { ApiResponse } from './models';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'day34_jokes';
+  
+  jokeSvc = inject(JokeService)
+
+  resp$!: Observable<ApiResponse>
+  prom$!: Promise<ApiResponse>
+  countO: number = 0
+  countP: number = 0
+
+  getJokeAsObservable() {
+    this.resp$ = this.jokeSvc.getJokeAsObservable()
+    this.countO ++
+  }
+
+  getJokeAsPromise() {
+    this.prom$ = this.jokeSvc.getJokeAsPromise()
+    this.countP ++
+  }
+
 }

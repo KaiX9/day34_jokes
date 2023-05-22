@@ -1,0 +1,13 @@
+<h1>Joke as Promise</h1>
+
+<div *ngIf="prom$ | async as p else noInfo">
+    <p>Setup: {{ p.setup }}</p>
+    <p>Punchline: {{ p.punchline }}</p>
+</div>
+<div>
+    <a [routerLink]="[ '/' ]">Back</a>
+</div>
+
+<ng-template #noInfo>
+    No data
+</ng-template>

@@ -1,0 +1,13 @@
+<h1>Joke as Obs</h1>
+
+<div *ngIf="resp$ | async as r else noInfo">
+    <p>Setup: {{ r.setup }}</p>
+    <p>Punchline: {{ r.punchline }}</p>
+</div>
+<div>
+    <a [routerLink]="[ '/' ]">Back</a>
+</div>
+
+<ng-template #noInfo>
+    No data
+</ng-template>
